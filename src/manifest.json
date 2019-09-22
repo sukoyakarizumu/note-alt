@@ -1,6 +1,6 @@
 {
   "name": "note Alt Editor",
-  "description": "noteに添付した画像のalt属性を表示・編集します。",
+  "description": "ウェブサービス'note' ( https://note.mu ) に添付した画像のalt属性を表示・編集します。",
   "version": "1.0",
   "content_scripts": [
     {
@@ -10,6 +10,8 @@
     }
   ],
   "icons": {
+    "16": "icons/icon_16x16.png",
+    "48": "icons/icon_48x48.png",
     "128": "icons/icon_128x128.png"
   },
   "manifest_version": 2
