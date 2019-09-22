@@ -1,0 +1,55 @@
+.ns-note .note-extension-alt-button {
+  position: absolute;
+  background: #222;
+  border: 1px solid #222;
+  color: #fff;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border-radius: 4px;
+  padding: 8px;
+  height: 50px;
+  box-sizing: border-box;
+}
+
+.ns-note .note-extension-alt-button:hover,
+.ns-note .note-extension-alt-button:focus {
+  color: #41C9B4;
+}
+
+.ns-note .note-extension-alt-editor {
+  position: absolute;
+  background: #222;
+  border: 1px solid #222;
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border-radius: 4px;
+  padding: 8px;
+  height: 50px;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.ns-note .note-extension-alt-editor-input {
+  background: #222;
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  border: 0;
+  flex: 1;
+}
+
+.ns-note .note-extension-alt-editor-cancel {
+  background: #222;
+  width: 32px;
+  height: 32px;
+  font-size: 24px;
+}
+
+.ns-note .note-extension-alt-editor-submit:hover,
+.ns-note .note-extension-alt-editor-submit:focus {
+  color: #41C9B4;
+}
