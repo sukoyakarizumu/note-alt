@@ -9,6 +9,37 @@
 
   let editingIds = [];
 
+  const specialChars = new Map([
+    ["&", "&amp;"],
+    ['"', "&quot;"],
+    ["<", "&lt;"],
+    [">", "&gt;"]
+  ]);
+
+  const escapeHtmlSpecialChars = text => {
+    let escaped = text;
+    specialChars.forEach((value, key) => {
+      escaped = escaped.replace(new RegExp(key, "g"), value);
+    });
+    return escaped;
+  };
+
+  const unescapeHtmlSpecialChars = text => {
+    let unescaped = text;
+    specialChars.forEach((value, key) => {
+      unescaped = unescaped.replace(new RegExp(value, "g"), key);
+    });
+    return unescaped;
+  };
+
+  const setImgAlt = (imgEl, text) => {
+    imgEl.alt = escapeHtmlSpecialChars(text);
+  };
+
+  const getImgAlt = imgEl => {
+    return unescapeHtmlSpecialChars(imgEl.alt);
+  };
+
   const renderAltEditor = imgEl => {
     editingIds.push(imgEl.id);
     const editorEl = document.createElement("form");
@@ -22,7 +53,7 @@
     inputEl.classList.add(ALT_INPUT_CLASS_NAME);
     inputEl.setAttribute("title", "画像のALT");
     inputEl.setAttribute("placeholder", "画像のALT");
-    inputEl.value = imgEl.alt;
+    inputEl.value = getImgAlt(imgEl);
     editorEl.appendChild(inputEl);
     inputEl.select();
 
@@ -48,8 +79,8 @@
       closeAltEditor();
     });
     editorEl.addEventListener("submit", evt => {
-      imgEl.alt = inputEl.value;
       evt.preventDefault();
+      setImgAlt(imgEl, inputEl.value);
       closeAltEditor();
     });
   };
@@ -62,7 +93,7 @@
     buttonEl.classList.add(ALT_BUTTON_CLASS_NAME);
     buttonEl.setAttribute("type", "button");
     buttonEl.setAttribute("aria-label", "画像のALTを追加");
-    buttonEl.innerText = "ALT: " + (imgEl.alt || "(なし)");
+    buttonEl.innerText = "ALT: " + (getImgAlt(imgEl) || "(なし)");
     buttonEl.style.left = imgEl.offsetLeft + editorMargin + "px";
     buttonEl.style.top =
       imgEl.offsetTop + imgEl.height - editorHeight - editorMargin + "px";
