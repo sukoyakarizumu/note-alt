@@ -1,7 +1,7 @@
 {
   "name": "note Alt Editor",
   "description": "ウェブサービス'note' ( https://note.mu ) に添付した画像のalt属性を表示・編集します。",
-  "version": "1.0",
+  "version": "1.1",
   "content_scripts": [
     {
       "js": ["js/addAlt.js"],
